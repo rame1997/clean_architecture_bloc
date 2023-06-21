@@ -85,6 +85,15 @@ class _QuoteScreenState extends State<QuoteScreen> {
             }
           },
         ),
+       actions: [
+         IconButton(onPressed: (){
+           Navigator.pushNamed(context, Routes.postRoute);
+         },
+           icon: Icon(
+       Icons.post_add,
+       color: AppColors.primary,
+     ),)
+       ],
        title: Text(AppLocalizations.of(context)!.translate('app_name')!),
      );
     return RefreshIndicator(

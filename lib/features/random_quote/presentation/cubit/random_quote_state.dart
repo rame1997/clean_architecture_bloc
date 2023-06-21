@@ -9,7 +9,9 @@ abstract class RandomQuoteState extends Equatable {
 
 class RandomQuoteInitial extends RandomQuoteState {}
 
-class RandomQuoteIsLodaing extends RandomQuoteState {}
+class RandomQuoteIsLodaing extends RandomQuoteState {
+
+}
 
 class RandomQuoteIsLodaed extends RandomQuoteState {
   final Quote quote;

@@ -4,6 +4,7 @@ import 'package:clean_art_project/injection_container.dart' as di;
 import 'config/locale/app_localizations_setup.dart';
 import 'config/themes/app_theme.dart';
 import 'core/utils/app_strings.dart';
+import 'features/post/presentation/bloc/post_bloc.dart';
 import 'features/random_quote/presentation/cubit/random_quote_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,6 +22,8 @@ class QuoteApp extends StatelessWidget {
           BlocProvider(create: (context) => di.sl<RandomQuoteCubit>()),
           //بردو لازم في الlogin تستدعي ميثود تبعت الشيرد بريفرنس الي بتقول انوا مسجل الدخول
           BlocProvider(create: (context) => di.sl<LocaleCubit>()..getSavedLang()),
+          BlocProvider(
+              create: (_) =>di.sl<PostBloc>()..add(GetPostsEvent())),
         ],
         child: BlocBuilder<LocaleCubit, LocaleState>(
           buildWhen: (previousState, currentState) {

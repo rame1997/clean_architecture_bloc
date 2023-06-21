@@ -5,6 +5,7 @@ import 'core/api/app_interceptors.dart';
 import 'core/api/dio_consumer.dart';
 import 'core/netwok/netwok_info.dart';
 import 'package:dio/dio.dart';
+import 'features/post/injection_container.dart';
 import 'features/random_quote/data/datasources/random_quote_local_data_source.dart';
 import 'features/random_quote/data/datasources/random_quote_remote_data_source.dart';
 import 'features/random_quote/data/repositories/quote_repository_impl.dart';
@@ -23,8 +24,10 @@ Future<void> init() async {
   //باختصار الكوبيت كانت بتحتاج الي usecases وهادا يحتاج الي ريبو  وهادا يحتاج الي الداد سورس وهادا يحتاج الي http وكل هادا يكون داخل السيرفر لوكيتور بيجمع كل هدول
   //كل حاجة تستخدم في المشروع كديبنتنسي لازم تكون هان
   //بتحط الbloc والusecase والباقي
+  //نحتفظ بسجل مركزي يوفر من مكان واحد
   initRandomQute();
   initSplashQute();
+  initGetPost();
   //! Core
   sl.registerLazySingleton<NetworkInfo>(
           () => NetworkInfoImpl(connectionChecker: sl()));
