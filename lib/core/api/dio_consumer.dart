@@ -42,6 +42,15 @@ class DioConsumer implements ApiConsumer {
   @override
   Future get(String path, {Map<String, dynamic>? queryParameters}) async {
     try {
+      // String token = await _localStorage.getStringVal(PrefsConstant.userToken);
+      // if (token.isNotEmpty) {
+      //   client.options.headers = {
+      //     "Authorization": "Bearer $token",
+      //     'Accept': 'application/json',
+      //     'Access-Control-Allow-Origin': '*',
+      //     'Content-Type': 'application/json',
+      //   };
+      // }
       final response = await client.get(path, queryParameters: queryParameters);
       return _handleResponseAsJson(response);
     } on DioError catch (error) {

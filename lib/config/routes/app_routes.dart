@@ -21,16 +21,20 @@ class Routes {
 class AppRoutes {
   static Route? onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
+      //case Routes.initialRoute:
+        // return MaterialPageRoute(builder: (context) {
+        //   return BlocProvider(
+        //
+        //     create: (context) => di.sl<RandomQuoteCubit>(),
+        //     child: SplashScreen(),
+        //   );
+        // });
+
       case Routes.initialRoute:
-        return MaterialPageRoute(builder: (context) {
-          return BlocProvider(
-
-            create: (context) => di.sl<RandomQuoteCubit>(),
-            child: SplashScreen(),
-          );
-        });
-
-      case Routes.favouritQuoteRoute:
+        return MaterialPageRoute(builder: ((context) {
+          return const SplashScreen();
+        }));
+        case Routes.favouritQuoteRoute:
         return MaterialPageRoute(builder: ((context) {
           return const FavouriteQuoteSccreen();
         }));

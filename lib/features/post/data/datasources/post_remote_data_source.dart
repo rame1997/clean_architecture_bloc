@@ -15,10 +15,12 @@ class PostRemoteDataSourceImpl implements PostRemoteDataSource {
 
   @override
   Future<List<PostModel>> getPost({required PostParameter parameter}  ) async {
+    print('parameter'+parameter.startIndex.toString());
+    print('parameter'+parameter.limit.toString());
     final response = await apiConsumer.get(
       EndPoints.getPost,
       queryParameters:
-        {'_start=': parameter.startIndex, '&_limit=': parameter.limit},
+        {'_start': parameter.startIndex, '_limit': parameter.limit},
     );
     // final userList = (response["data"] as List).map((e) => User.fromJson(e)).toList();
     return (response as List).map((e) => PostModel.fromJson(e)).toList();

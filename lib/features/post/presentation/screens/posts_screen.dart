@@ -57,6 +57,7 @@ class _PostsScreenState extends State<PostsScreen> {
         ),
         body: BlocBuilder<PostBloc, PostState>(
           builder: (context, state) {
+            print('state'+state.toString());
             switch (state.status) {
               case PostStatus.loading:
                 return const LoadingWidget();

@@ -14,7 +14,7 @@ class PostListItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ListTile(
-        leading: Text(post.id.toString()),
+        leading: Text(post.id.toString(),style: TextStyle(color: Colors.orange),),
         title: Text(post.title),
         isThreeLine: true,
         subtitle: Text(post.body),

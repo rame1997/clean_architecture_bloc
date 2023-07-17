@@ -21,6 +21,7 @@ Future<void> initGetPost() async {
   sl.registerFactory<PostBloc>(
           () => PostBloc(getPostUseCase: sl()));
 
+
   // Use cases
   sl.registerLazySingleton<GetPost>(
           () => GetPost(postRepository: sl()));

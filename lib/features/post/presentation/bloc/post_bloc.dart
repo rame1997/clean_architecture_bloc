@@ -27,14 +27,8 @@ class PostBloc extends Bloc<PostEvent, PostState> {
         if (state.hasReachedMax) return;
         try {
           if (state.status == PostStatus.loading) {
-            // emit(RandomQuoteIsLodaing());
-            // Either<Failure, Quote> response = await getRandomQuoteUseCase(NoParams());
-            // emit(response.fold(
-            //         (failure) => RandomQuoteError(msg: _mapFailureToMsg(failure)),
-            //         (quote) => RandomQuoteIsLodaed.RandomQuoteLodaed(quote: quote)));
-
-            Either<Failure, List<Post>> response =
-                await getPostUseCase(new PostParameter());
+            Either<Failure,List<Post>> response =
+                await getPostUseCase(PostParameter());
             response.fold((failure) {
               return PostError(msg: MapFailureToMsg.mapFailureToMsg(failure));
             }, (Posts) {
@@ -47,8 +41,9 @@ class PostBloc extends Bloc<PostEvent, PostState> {
                       hasReachedMax: false));
             });
           } else {
+            print('state.posts.length'+state.posts.length.toString());
             Either<Failure, List<Post>> response =
-                await getPostUseCase(new PostParameter(state.posts.length));
+                await getPostUseCase( PostParameter(state.posts.length));
             response.fold((failure) {
               return PostError(msg: MapFailureToMsg.mapFailureToMsg(failure));
             }, (Posts) {
